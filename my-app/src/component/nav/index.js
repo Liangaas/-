@@ -9,4 +9,5 @@ const  Nav = props => (
         ))
     }
     </ul>
-)
+);
+export default Nav;

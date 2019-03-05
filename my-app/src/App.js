@@ -1,25 +1,41 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import Nav from './component/nav';
+import Cart from './page/cart';
+import GoodsDetail from './page/goods-detail';
 import './App.css';
+
+const LIST = [{
+  text:'购物车',
+  url:'/cart'
+},{
+  text:'百度',
+  url:'http://www.baidu/com'
+}];
+
+const GOODS = [{
+  name: 'iPhone 7',
+  price: '6,888',
+  amount: 37
+}, {
+  name: 'iPad',
+  price: '3,488',
+  amount: 82
+}, {
+  name: 'MacBook Pro',
+  price: '11,888',
+  amount: 15
+}];
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className='nav_bar'>
+           <Nav list={LIST}/>
+        </div>
+        <Cart/>
+        <GoodsDetail list={GOODS}/>
       </div>
     );
   }
