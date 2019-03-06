@@ -3,7 +3,7 @@ import React from 'react';
 
 class GoodsDetail extends React.Component{
     render(){
-        console.log(this.props)
+  
         return(
            
             <ul className='goods'>
