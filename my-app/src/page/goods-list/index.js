@@ -29,6 +29,19 @@ export default class GoodsList extends Component{
     locationTo = (url) => {
         window.location.href = url
     }
+    addToCart = (id) =>{
+        //模拟的情况，只有一个用户为user
+        if(!sessionStorage.getItem('user')){
+
+            let arr = []
+            arr.push(id)
+            sessionStorage.setItem('user',JSON.stringify(arr))
+        }else{
+            let arr = JSON.parse(sessionStorage.getItem('user'));
+            arr.push(id)        
+            sessionStorage.setItem('user',JSON.stringify(arr))
+        }
+    }
 
 
     render(){
@@ -46,11 +59,11 @@ export default class GoodsList extends Component{
             {
                 GOODS.map((item,idx) => {
                     return(
-                    <div class='good-item' key={idx} onClick={()=>{this.locationTo('/goods-detail/'+item.id)}}>
-                    <img src={item.pic} alt='pic'/>
+                    <div class='good-item' key={idx} >
+                    <img onClick={()=>{this.locationTo('/goods-detail/'+item.id)}} src={item.pic} alt='pic'/>
                     <div class='good-name'>{item.name}</div>
                     <div class='good-price' >¥{item.price}</div>
-                    <div class='img-cart'><img  src='/imgs/购物车.png' alt='购物车'></img></div>
+                    <div onClick={()=>{this.addToCart(item.id)}} class='img-cart'><img  src='/imgs/购物车.png' alt='购物车'></img></div>
                     </div>
                     )
                 })
