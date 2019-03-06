@@ -3,6 +3,7 @@ import {Route} from 'react-router-dom'
 
 import Cart from '../page/cart'
 import GoodsList from '../page/goods-list'
+import GoodsDetail from '../page/goods-detail';
 
 export default class RouterIndex extends Component {
     render(){
@@ -11,6 +12,7 @@ export default class RouterIndex extends Component {
             <div>
                 <Route path='/cart' component={Cart} />
                 <Route path='/goods-list' component={GoodsList}/>
+                <Route path='/goods-detail/:id' component={GoodsDetail}/> 
            </div>
         )
     }

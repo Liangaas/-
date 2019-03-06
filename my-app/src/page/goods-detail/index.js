@@ -2,23 +2,13 @@
 import React from 'react';
 
 class GoodsDetail extends React.Component{
+    
     render(){
-  
         return(
-           
-            <ul className='goods'>
-            {
-                this.props.list.map((ele,idx)=>{
-                    return(
-                    <li key={idx} style={{marginBottom:20,listStyle:'none'}}>
-                        <span>{ele.name}</span>|
-                        <span>¥ {ele.price}</span>|
-                        <span>剩余 {ele.amount} 件</span>|
-                    </li>
-                    )
-                })
-            }
-            </ul>
+           <div>
+            <h1>hello goods detail</h1>
+            <div>{this.props.match.params.id}</div>
+            </div>
         )
     }
 }
