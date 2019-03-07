@@ -1,0 +1,20 @@
+[{
+    "name": "Apple/苹果 iPhone XR 移动联通电信4G手机双卡双待 苹果iPhoneXR",
+    "price": "6288",
+    "id": "001",
+    "num":1,
+    "pic":"/imgs/iphoneXR.jpg"
+  }, {
+    "name": "Xiaomi/小米 红米6 ai双摄8核全面屏智能学生老人拍照青春手机X正品官方旗舰店",
+    "price": "729",
+    "id": "002",
+    "num":1,
+    "pic":"/imgs/红米6.jpg"
+  
+  }, {
+    "name": "vivo iQOO生而强悍高通骁龙855处理器全面屏智能手机官方正品 vivo IQOO iQ00",
+    "price": "2998",
+    "id": "003",
+    "num":1,
+    "pic":"/imgs/vivo-IQOO.jpg"
+  }]
