@@ -1,0 +1,91 @@
+.item{
+    overflow: hidden;
+    
+}
+.cart-checkbox {
+    /* position: relative;
+    z-index: 1;
+    float: left;
+    width: 15px;
+    height: 15px;
+    background-position: 0 0;
+    line-height: 200em;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid lightgray; */
+    position: relative;
+    float: left;
+    width: 15px;
+    height: 15px;
+    
+   
+   
+
+}
+.pic img{
+    margin: 0 30px;
+    max-height: 120px;
+    max-width: 120px;
+    vertical-align: middle;
+    float: left;
+}
+.goods h3{
+    
+    font-size: 11px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;  
+    width: 300px;
+    height: 120px;
+    float: left;
+    
+}
+.num{
+    line-height: 150px;
+    float: left;
+    margin: 0 80px;
+    overflow: hidden;
+
+}
+.num input{
+    width: 60px;
+    height: 24px;
+    margin: 0 5px;
+    text-align: center;
+}
+.num button{
+    
+    background-color: blanchedalmond;
+    color: #efbba9;
+    border-color: #ffe1d3;
+    height:29px;
+    text-align: center;
+    outline:none;
+
+}
+.per-price{
+    float: left;
+    overflow: hidden;
+    margin-top:70px;
+    margin-left: 10px;
+    width: 100px;
+}
+.sum-price{
+    float: left;
+    overflow: hidden;
+    color: #f40;
+    font-weight: 700;
+    margin-top:70px;
+    width: 200px;
+
+}
+.del{
+    
+    float: left;
+    display: block;
+    width: 50px;
+    margin: 70px 40px;
+}
+.del::after{
+    clear: both;
+}

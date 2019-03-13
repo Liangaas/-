@@ -3,6 +3,12 @@ import { List } from 'antd'
 import './index.css';
 
 
+/*
+Todo:
+1. 屏幕大小缩放导致float的原始往下跑，想把应用做成缩放只是遮挡部分内容，不影响浮动
+2. checkbox还没有设置自定义演示，目前是默认样式
+3. 结算的button也还是原始样式
+*/
 
 
 export default class Cart extends Component {
@@ -30,14 +36,14 @@ export default class Cart extends Component {
         //检测是否是全选了
 
         var bool = this.state.arr.every((ele, index) => {
-            if (ele.checked == true) {
+            if (ele.checked === true) {
                 return true
             } else {
                 return false
             }
         })
         // console.log(bool)
-        if (bool == true) {
+        if (bool === true) {
             this.refs.allSelected.checked = true
         } else {
             this.refs.allSelected.checked = false
@@ -49,7 +55,7 @@ export default class Cart extends Component {
         var reg = /^[0-9]*$/
         this.setState({
             arr: this.state.arr.map((ele, index) => {
-                if (index == i) {
+                if (index === i) {
                     if (reg.test(ele.num)) {
                         ele.num = e.target.value
                     } else {
@@ -70,7 +76,7 @@ export default class Cart extends Component {
         //文本框的值 e.target.value 需要赋值给 json 数据的下标为index
         this.setState({
             arr: this.state.arr.map((ele, index) => {
-                if (index == i) {
+                if (index === i) {
                     ele.num = ele.num * 1 + 1
                     return ele
                 } else {
@@ -87,7 +93,7 @@ export default class Cart extends Component {
 
         this.setState({
             arr: this.state.arr.map((ele, index) => {
-                if (index == i) {
+                if (index === i) {
                     if (ele.num <= 1) {
                         ele.num = 1
                         return ele
@@ -109,7 +115,7 @@ export default class Cart extends Component {
     //删除
     delete = (e, i) => {
         let arr = this.state.arr.filter((ele, index) => {
-            if (index != i) {
+            if (index !== i) {
                 return true
             }
         })
@@ -123,7 +129,7 @@ export default class Cart extends Component {
     getCheckedChange = (e, i) => {
         this.setState({
             arr: this.state.arr.map((ele, index) => {
-                if (index == i) {
+                if (index === i) {
                     ele.checked = e.target.checked
                     return ele
                 } else {
@@ -136,7 +142,7 @@ export default class Cart extends Component {
 
     //点击全选和全不选
     CheckedChange = (e) => {
-        if (e.target.checked == true) {
+        if (e.target.checked === true) {
             this.setState({
                 arr: this.state.arr.map((ele, index) => {
                     ele.checked = true
@@ -144,7 +150,7 @@ export default class Cart extends Component {
                 })
             })
 
-        } else if (e.target.checked == false) {
+        } else if (e.target.checked === false) {
             this.setState({
                 arr: this.state.arr.map((ele, index) => {
                     ele.checked = false
@@ -174,14 +180,17 @@ export default class Cart extends Component {
             <div class='container'>
                 <div className='section'>
                     <List
-                        split
+                    //header和footer有效果
+                    // header={<div>Header</div>}
+                    // footer={<div>Footer</div>}
+                        bordered
                         size='large'
                         dataSource={this.state.arr}
                         renderItem={(ele, index) => (<List.Item>
                         
                             <div className='item' key={index}>
                            
-                                <div className='radio'>
+                                <div className='cart-checkbox'>
                                     <input type="checkbox" checked={ele.checked} onChange={
                                         (e) => {
                                             this.getCheckedChange(e, index)
@@ -196,6 +205,9 @@ export default class Cart extends Component {
 
                                 <div className='goods'>
                                     <h3>{ele.name}</h3>
+                                    <div className="per-price">
+                                        <div>单价: ¥ {ele.price}</div>
+                                    </div>
                                     <div className='num'>
                                         <button onClick={(e) => {
                                             // console.log(e,index)
@@ -212,15 +224,16 @@ export default class Cart extends Component {
                                         }}>+</button>
                                     </div>
 
-                                    <div className="price">
-                                        <div>单价: {ele.price} 总价:{ele.price * ele.num}</div>
+                                   
+                                    <div className="sum-price">
+                                       <div>总价: ¥ {ele.price * ele.num}</div>
                                     </div>
 
                                 </div>
                                 <div className='del'>
-                                    <button onClick={(e) => {
+                                    <label onClick={(e) => {
                                         this.delete(e, index)
-                                    }}>删除</button>
+                                    }}>删除</label>
                                 </div>
                             </div>
                         </List.Item>)}

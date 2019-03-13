@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import Cart from './page/cart';
-import GoodsDetail from './page/goods-detail';
 import './App.css';
 import './index.css';
-import {BrowserRouter as Router,Link,Route } from 'react-router-dom'; 
+import {BrowserRouter as Router,Link } from 'react-router-dom'; 
 import {Icon} from 'antd'
 import RouterIndex from './routers'
 
