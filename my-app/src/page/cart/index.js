@@ -48,7 +48,14 @@ export default class Cart extends Component {
         } else {
             this.refs.allSelected.checked = false
         }
+
+        sessionStorage.setItem('user',JSON.stringify(this.state.arr))
     }
+    
+    // componentWillUnmount(){
+    //     alert('leave')
+    //     sessionStorage.setItem('user',JSON.stringify(this.state.arr))
+    // }
 
     //获取输入框的值
     handInputChange = (e, i) => {
@@ -175,6 +182,11 @@ export default class Cart extends Component {
         })
     }
 
+
+    locationTo = (url) => {
+        window.location.href = url
+    }
+
     render() {
         return (
             <div class='container'>
@@ -198,13 +210,13 @@ export default class Cart extends Component {
                                     } />
                                 </div>
 
-                                <div className='pic'>
+                                <div className='pic' onClick={()=>{this.locationTo('/goods-detail/'+ele.id)}}>
                                 
                                     <img src={ele.pic} alt="" />
                                 </div>
 
                                 <div className='goods'>
-                                    <h3>{ele.name}</h3>
+                                    <h3 onClick={()=>{this.locationTo('/goods-detail/'+ele.id)}} >{ele.name}</h3>
                                     <div className="per-price">
                                         <div>单价: ¥ {ele.price}</div>
                                     </div>

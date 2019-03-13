@@ -14,7 +14,7 @@ export default class GoodsList extends Component{
     }
     addToCart = (item) =>{
         //模拟的情况，只有一个用户为user
-        console.log(item)
+
         if(!sessionStorage.getItem('user')){
 
             let arr = []
@@ -25,7 +25,6 @@ export default class GoodsList extends Component{
             let flag = false
             for(let i=0;i<arr.length;i++){
                 if(item.id === arr[i].id){
-                    console.log('come inb')
                     arr[i].num++
                     flag = true
                 }
