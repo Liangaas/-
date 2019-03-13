@@ -14,7 +14,6 @@ class App extends Component {
       var arr=JSON.parse(sessionStorage.getItem('user'));
       
       if(arr){
-      console.log(arr)
       this.setState({
         cartNum:arr.length
       })

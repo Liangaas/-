@@ -23,7 +23,6 @@ export default class Cart extends Component {
     componentDidMount() {
         if (sessionStorage.getItem('user')) {
             var list = JSON.parse(sessionStorage.getItem('user'))
-            console.log(list)
             this.setState({
                 arr: list
             })
@@ -79,7 +78,6 @@ export default class Cart extends Component {
 
     //增加
     increase = (e, i) => {
-        console.log(e.target.value)
         //文本框的值 e.target.value 需要赋值给 json 数据的下标为index
         this.setState({
             arr: this.state.arr.map((ele, index) => {

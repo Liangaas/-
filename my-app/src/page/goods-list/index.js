@@ -8,7 +8,17 @@ import { Icon,Input } from 'antd';
 
 export default class GoodsList extends Component{
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            searchText:'',
+            list:GOODS
+        }
+    }
 
+    componentDidMount(){
+        
+    }
     locationTo = (url) => {
         window.location.href = url
     }
@@ -36,28 +46,46 @@ export default class GoodsList extends Component{
             flag = false
         }
     }
-
+    handleSearchTextChange = (e) =>{
+        var searchInputText = e.target.value
+        this.setState({
+            searchText : searchInputText
+        })
+        
+    }
+    test = (item) => {
+        return (item.name.toUpperCase().indexOf(this.state.searchText.toUpperCase())!== -1)
+    }
+    handleSearchRequest(){
+        var arr = GOODS.filter(this.test)
+        console.log(arr)
+        this.setState({
+            list:arr
+        })
+    }
 
     render(){
         return(
-            <div class='container'>
-            <div class='header'>
-            <div class='search'>
-            <Icon type="search" /> <Input placeholder="  搜宝贝" />
+            <div className='container'>
+            <div className='header'>
+            <div className='search'>
+            
+            <Icon type="search" /> <Input className='searchInput' type='text' onChange={this.handleSearchTextChange} placeholder="  搜宝贝" />
+            <button onClick={()=>{this.handleSearchRequest()}}>搜索</button>
             </div>
-            <div class='price-section'>
+            <div className='price-section'>
             <Input placeholder="  ¥" /> - <Input placeholder="  ¥" />
             </div>
             </div>
-            <div class='goods-list'>
+            <div className='goods-list'>
             {
-                GOODS.map((item,idx) => {
+                this.state.list.map((item,idx) => {
                     return(
-                    <div class='good-item' key={idx} >
+                    <div className='good-item' key={idx} >
                     <img onClick={()=>{this.locationTo('/goods-detail/'+item.id)}} src={item.pic} alt='pic'/>
-                    <div class='good-name'>{item.name}</div>
-                    <div class='good-price' >¥{item.price}</div>
-                    <div onClick={(e)=>{this.addToCart(item)}} class='img-cart'><img  src='/imgs/购物车.png' alt='购物车'></img></div>
+                    <div className='good-name'>{item.name}</div>
+                    <div className='good-price' >¥{item.price}</div>
+                    <div onClick={(e)=>{this.addToCart(item)}} className='img-cart'><img  src='/imgs/购物车.png' alt='购物车'></img></div>
                     </div>
                     )
                 })
