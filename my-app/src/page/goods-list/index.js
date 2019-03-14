@@ -12,6 +12,8 @@ export default class GoodsList extends Component{
         super(props)
         this.state = {
             searchText:'',
+            startPriceText:'',
+            endPriceText:'',
             list:GOODS
         }
     }
@@ -53,12 +55,35 @@ export default class GoodsList extends Component{
         })
         
     }
-    test = (item) => {
+    includeName = (item) => {
         return (item.name.toUpperCase().indexOf(this.state.searchText.toUpperCase())!== -1)
     }
     handleSearchRequest(){
-        var arr = GOODS.filter(this.test)
-        console.log(arr)
+        var arr = GOODS.filter(this.includeName)
+        this.setState({
+            list:arr
+        })
+    }
+   
+    handleStartPriceChange=(e)=>{
+        var startPriceInputText = e.target.value
+        this.setState({
+            startPriceText:startPriceInputText
+        })
+
+    }
+    handleEndPriceChange=(e)=>{
+        var endPriceInputText = e.target.value
+        this.setState({
+            endPriceText:endPriceInputText
+        })
+    }
+    withinPriceSection = (item) =>{      
+        return (parseFloat(item.price)>=this.state.startPriceText&&parseFloat(item.price)<=this.state.endPriceText)||
+        (parseFloat(item.price)<=this.state.startPriceText&&parseFloat(item.price)>=this.state.endPriceText)
+    }
+    handleFindRequest(){
+        var arr = GOODS.filter(this.withinPriceSection)
         this.setState({
             list:arr
         })
@@ -74,7 +99,8 @@ export default class GoodsList extends Component{
             <button onClick={()=>{this.handleSearchRequest()}}>搜索</button>
             </div>
             <div className='price-section'>
-            <Input placeholder="  ¥" /> - <Input placeholder="  ¥" />
+            <Input type='text' onChange={this.handleStartPriceChange} className='start-price' placeholder="  ¥" /> - <Input type='text' onChange={this.handleEndPriceChange} className='end-price' placeholder="  ¥" />
+            <button onClick={()=>{this.handleFindRequest()}}>确定</button>
             </div>
             </div>
             <div className='goods-list'>
