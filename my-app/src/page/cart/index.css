@@ -1,18 +1,8 @@
-.item{
+/* .item{
     overflow: hidden;
     
 }
 .cart-checkbox {
-    /* position: relative;
-    z-index: 1;
-    float: left;
-    width: 15px;
-    height: 15px;
-    background-position: 0 0;
-    line-height: 200em;
-    overflow: hidden;
-    cursor: pointer;
-    border: 1px solid lightgray; */
     position: relative;
     float: left;
     width: 15px;
@@ -91,4 +81,4 @@
 }
 .del::after{
     clear: both;
-}
+} */

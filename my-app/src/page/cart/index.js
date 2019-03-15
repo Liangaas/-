@@ -3,6 +3,7 @@ import { List } from 'antd'
 import './index.css';
 
 
+
 /*
 Todo:
 1. 屏幕大小缩放导致float的原始往下跑，想把应用做成缩放只是遮挡部分内容，不影响浮动
@@ -185,6 +186,17 @@ export default class Cart extends Component {
         window.location.href = url
     }
 
+    handleSubmit=()=>{
+        let arr = this.state.arr
+        for(let i=0;i<arr.length;i++){
+            if (arr[i].checked === true) {
+                this.locationTo('/order')
+            }
+        }
+        //toast 没有结算的商品
+       
+    }
+
     render() {
         return (
             <div class='container'>
@@ -254,7 +266,7 @@ export default class Cart extends Component {
                 <div className="footer">
                     全选: <input type="checkbox" ref="allSelected" onChange={(e) => { this.CheckedChange(e) }} />
                     合计: {this.state.totalPrice}
-                    <button>结算</button>
+                    <button onClick={()=>this.handleSubmit()}>结算</button>
                 </div>
 
             </div>

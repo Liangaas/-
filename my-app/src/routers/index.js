@@ -3,7 +3,9 @@ import {Route} from 'react-router-dom'
 
 import Cart from '../page/cart'
 import GoodsList from '../page/goods-list'
-import GoodsDetail from '../page/goods-detail';
+import GoodsDetail from '../page/goods-detail'
+import Order from '../page/order'
+import Success from '../page/success'
 
 export default class RouterIndex extends Component {
     render(){
@@ -13,6 +15,8 @@ export default class RouterIndex extends Component {
                 <Route path='/cart' component={Cart} />
                 <Route path='/goods-list' component={GoodsList}/>
                 <Route path='/goods-detail/:id' component={GoodsDetail}/> 
+                <Route path='/order' component={Order}/>
+                <Route path='/success' component={Success}/>
            </div>
         )
     }
