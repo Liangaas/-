@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import './index.css'
 import GOODS from '../../data/data.json'
 
-import { Icon,Input } from 'antd';
+import { Icon,Input,Row, Col } from 'antd';
 
 
 
@@ -94,13 +94,29 @@ export default class GoodsList extends Component{
             <div className='container'>
             <div className='header'>
             <div className='search'>
-            
+            <div className="gutter-example">
+            <Row gutter={16}>
+            <Col className="gutter-row" span={6}>
             <Icon type="search" /> <Input className='searchInput' type='text' onChange={this.handleSearchTextChange} placeholder="  搜宝贝" />
-            <button onClick={()=>{this.handleSearchRequest()}}>搜索</button>
+            </Col>
+            <Col className="gutter-row" span={6}>
+            <button className='search-btn' onClick={()=>{this.handleSearchRequest()}}>搜索</button>
+            </Col>
+            
+            <Col className="gutter-row" span={5}>
+            <Input type='text' onChange={this.handleStartPriceChange} className='start-price' placeholder="  ¥" /> 
+               --
+            </Col>
+            
+            <Col className="gutter-row" span={3}>
+            <Input type='text' onChange={this.handleEndPriceChange} className='end-price' placeholder="  ¥" />
+            </Col>
+            <Col className="gutter-row" span={4}>
+            <button className='confirm-btn' onClick={()=>{this.handleFindRequest()}}>确定</button>
+            </Col>
+
+            </Row>
             </div>
-            <div className='price-section'>
-            <Input type='text' onChange={this.handleStartPriceChange} className='start-price' placeholder="  ¥" /> - <Input type='text' onChange={this.handleEndPriceChange} className='end-price' placeholder="  ¥" />
-            <button onClick={()=>{this.handleFindRequest()}}>确定</button>
             </div>
             </div>
             <div className='goods-list'>

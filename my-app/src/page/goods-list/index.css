@@ -7,12 +7,19 @@
     width: 100%;
 }
 .search{
-    float: left; 
+    
     margin-left: 120px;
     margin-right: 160px;
 }
-.price-section{
-    float: left; 
+.searchInput{
+    width: 130px;
+}
+.search-btn{
+    margin-left: -71px;
+    width: 60px;
+    height: 32px;
+    border-radius: 10px;
+
 }
 .goods-list::before{
    width: 100%;
@@ -22,6 +29,20 @@
 .goods-list{
     margin-left: 100px;
 }
+.start-price{
+    width: 120px;
+}
+.end-price{
+    width: 120px;
+    margin-left: -50px;
+}
+.confirm-btn{
+    margin-left: -39px;
+    width: 60px;
+    height: 32px;
+    border-radius: 10px;
+}
+
 .good-item{
     
     float: left;;
