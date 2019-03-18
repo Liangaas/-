@@ -24,7 +24,11 @@
     border: 1px solid #726d6d; /*no*/
     border-radius: 8px;
 }
-       
+.error{
+    color:#ff3000;
+    font-size: 12px;
+    
+}
        
        
         

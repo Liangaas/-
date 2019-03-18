@@ -46,7 +46,7 @@ export default class Order extends Component{
             allSum:0,
             addressText:'',
             username:'',
-            tel:'',
+            phoneNumber:'',
             addNewAddressDiv:document.createElement('div')
         }
     }
@@ -105,11 +105,11 @@ export default class Order extends Component{
         console.log(arr)
         var addressText = arr[0].replace(/,/g," ")
         var username = arr[1]
-        var tel = arr[2]
+        var phoneNumber = arr[2]
         this.setState({
             addressText:addressText,
             username:username,
-            tel:tel
+            phoneNumber:phoneNumber
         })
     }
 
@@ -124,10 +124,10 @@ export default class Order extends Component{
                         dataSource={this.state.addressArr}
                         renderItem={(ele, index) => (
                         <List.Item>
-                        <input type="radio" value={ele.address+';'+ele.name+';'+ele.tel} onChange={this.radioSelect} name="killOrder" />
+                        <input type="radio" value={ele.address+';'+ele.name+';'+ele.phoneNumber} onChange={this.radioSelect} name="killOrder" />
                         <div className='address'>{ele.address}</div>
                         <div className='name'>({ele.name} 收)</div>
-                        <div className='tel'>{ele.tel}</div>                            
+                        <div className='phoneNumber'>{ele.phoneNumber}</div>                            
                         </List.Item>)}
                     />
                     <button className='addAdress' onClick={()=>{this.addNewAddress()}}>使用新地址</button>
@@ -139,7 +139,7 @@ export default class Order extends Component{
             <div className="allSum">
             <div className="actualPayment">实付款： <span>¥ </span>{this.state.allSum}</div>
             <div className="sendAddress">寄送至： {this.state.addressText}</div>
-            <div className="receiver">接受人： {this.state.username}  {this.state.tel}</div>
+            <div className="receiver">接受人： {this.state.username}  {this.state.phoneNumber}</div>
             <button onClick={()=>window.location.href = '/cart'} className='backToCart'>返回购物车</button><button onClick={()=>window.location.href='/success'} className='submitOrder'>提交订单</button>
             </div>
             </div>
